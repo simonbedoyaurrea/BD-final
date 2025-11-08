@@ -22,4 +22,4 @@ Para verificar que este en funcionamiento, ejecute el siguiente comando:
 docker ps
 ```
 
-Debe aparecer el contenedor `biblioteca_db`. Si este es el caso entonces ya tiene la base de datos en funcionamiento
+Debe aparecer el contenedor `concesionario_db`. Si este es el caso entonces ya tiene la base de datos en funcionamiento
