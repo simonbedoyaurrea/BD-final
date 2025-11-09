@@ -23,23 +23,29 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class Cliente {
+    
+    //Clave primaria de Cliente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Constraint para evitar nombres nulos
     @Column(nullable = false)
     private String nombre;
 
+    //Constraint para evitar apellidos nulos
     @Column(nullable = false)
     private String apellido;
 
+    //Constraint para evitar correos nulos y duplicados
     @Column(nullable = false, unique = true, length = 150)
     private String correo;
 
+    //El telefono puede ser nulo
     private String telefono;
 
-    
 
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

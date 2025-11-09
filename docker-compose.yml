@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: galaxia_Motors
+      POSTGRES_DB: galaxia_motors
     ports:
       - "5433:5432"
     volumes:

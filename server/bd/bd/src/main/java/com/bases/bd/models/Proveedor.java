@@ -1,6 +1,7 @@
 package com.bases.bd.models;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,9 @@ import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import org.hibernate.mapping.Constraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,20 +32,30 @@ import lombok.Setter;
 @Builder
 public class Proveedor {
 
+    //Clave primaria para Proveedor
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Constraint para evitar nombres nulos
+    @Column(nullable = false)
     private String nombre;
 
+    //Relación muchos a uno con Galaxia
     @ManyToOne
     @JoinColumn(name = "galaxia_id")
     private Galaxia galaxia;
+
     private String contacto;
+    
     private String telefono; 
+
+    //Relación uno a muchos con Accesorio
     @OneToMany(mappedBy = "proveedor")
     private List<Accesorio> accesorios = new ArrayList<>();
 
+
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

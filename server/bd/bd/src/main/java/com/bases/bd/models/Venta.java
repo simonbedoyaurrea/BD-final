@@ -34,21 +34,26 @@ import lombok.Setter;
 @Builder
 public class Venta {
     
+    //Clave primaria para Venta
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Relación muchos a uno con Vehiculo
     @ManyToOne
     @JoinColumn(name = "vehiculo_id")
     private Vehiculo vehiculo;
 
+    //Relación muchos a uno con Cliente
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    //Constraint para evitar fechas nulas
     @Column(nullable = false)
     private LocalDate fechaVenta;
 
+    //Constraint para evitar totales nulos
     @Column(nullable = false)
     private Long total;
 
@@ -56,13 +61,16 @@ public class Venta {
     @Column(nullable = false)
     private MetodoPago metodoPago;
 
+    //Relación muchos a muchos con Accesorio
     @ManyToMany
     @JoinTable(
         name = "venta_accesorio",
         joinColumns = @JoinColumn(name = "venta_id"),
         inverseJoinColumns = @JoinColumn(name = "accesorio_id")
     )
+    
     private List<Accesorio> accesorios = new ArrayList<>();
+
 
 
     @Override

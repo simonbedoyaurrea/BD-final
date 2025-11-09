@@ -3,8 +3,11 @@ package com.bases.bd.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.mapping.Constraint;
+
 import com.bases.bd.models.enums.Color;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
@@ -30,25 +33,36 @@ import lombok.Setter;
 @Builder
 public class Vehiculo {
     
+    //Clave primaria para Vehiculo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    //Constraint para evitar nombres nulos
+    @Column(nullable = false)
     private String nombre;
 
+    //Relación muchos a uno con Marca
     @ManyToOne
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
+
     private String imagenURL;
 
+    //Constraint para evitar modelos nulos
+    @Column(nullable = false)
     private String  modelo;
 
+    //Constraint para evitar años nulos
+    @Column(nullable = false)
     private Long anio;
 
     @Enumerated(EnumType.STRING)
     private Color color;
 
+    //Constraint para evitar precios nulos
+    @Column(nullable = false)
     private Long precio;
 
     private Boolean esUsado;

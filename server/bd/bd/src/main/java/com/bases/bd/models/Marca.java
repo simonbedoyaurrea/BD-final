@@ -27,17 +27,21 @@ import lombok.Setter;
 @Builder
 public class Marca {
 
+    //Clave primaria para Marca
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Contraint para evitar nombres nulos
     @Column(nullable = false)
     private String nombre;
 
+    //Relacion muchos a uno con Galaxia
     @ManyToOne
     @JoinColumn(name = "galaxia_id")
     private Galaxia galaxia;
 
+    //Relación uno a muchos con Vehiculo
     @OneToMany(mappedBy = "marca")
     private List<Vehiculo> vehiculos = new ArrayList<>();
 

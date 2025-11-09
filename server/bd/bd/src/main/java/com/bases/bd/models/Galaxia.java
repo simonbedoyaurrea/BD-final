@@ -25,13 +25,16 @@ import lombok.Setter;
 @Builder
 public class Galaxia {
 
+    //Clave primaria para Galaxia
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Constraint para evitar nombres nulos
     @Column(nullable = false)
     private String nombre;
 
+    //Relación uno a muchos con Proveedor
     @OneToMany(mappedBy = "galaxia")
     private List<Marca> marcas = new ArrayList<>();
 

@@ -27,27 +27,35 @@ import lombok.Setter;
 @Builder
 public class Accesorio {
     
+    //Clave primaria de Accesorios
     @Id
     @GeneratedValue 
     (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Constraint para evitar nombres nulos
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
+    //Relación muchos a uno con Proveedor
+    //Constraint para evitar proveedores nulos
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "proveedor_id")
+    @JoinColumn(name = "proveedor_id", nullable = false)
     private Proveedor proveedor;
 
+    //Relación muchos a uno con Vehiculo
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehiculo_id")
     private Vehiculo vehiculo;
 
+    //La dedscripcion puede ser nula
     private String descripcion;
 
+    //Constraint para evitar precios nulos
     @Column(nullable = false)
     private Long precio;
+    
+
     
     @Override
     public boolean equals(Object o) {
