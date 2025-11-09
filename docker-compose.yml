@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    container_name: Galaxia_Motors_DB
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: galaxia_Motors
+    ports:
+      - "5433:5432"
+    volumes:
+      - galaxia_data:/var/lib/postgresql/data
+
+volumes:
+  galaxia_data:
