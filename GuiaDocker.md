@@ -26,4 +26,4 @@ Debe aparecer el contenedor `Galaxia_Motors_DB`. Si este es el caso entonces ya 
 
 ## Importante
 
-para mas informacion → [Ver aquí](server\bd\bd\src\main\resources\README.md)
+para mas informacion → [Ver aquí](server/bd/bd/src/main/resources/README.md)
